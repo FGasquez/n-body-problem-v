@@ -4,8 +4,8 @@ import solver
 
 fn main() {
 	mut threads := []thread {}
-	requests := chan solver.BodyRequest{}
-	results := chan solver.Body{}
+	requests := chan solver.BodyRequest{cap: 10}
+	results := chan solver.Body{cap: 10}
 	threads_count := 2
 
 	mut bodies := [
@@ -36,31 +36,42 @@ fn main() {
 				y: 51
 				z: 31
 			}
+		},
+		solver.Body{
+			id: 3
+			mass: 41
+			pos: solver.Vector{
+				x: 12
+				y: 34
+				z: 23
+			} 
+			vel: solver.Vector{
+				x: 15
+				y: 31
+				z: 25
+			}
 		}
 	]
 
-	// for i, body in bodies {
-	// 	println(body)
-	// }
-	for i in 1 .. threads_count {
-		println("worker $i")
+
+	for _ in 0 .. threads_count {
 		threads << go solver.worker(requests, results, 9.8, 0.5)
 	}
-	
-	for times in 0 .. 10 {
-		println("time $times")
-		prev_state := bodies.clone()
 
-		for i, _ in bodies {
-			println("push $i")
+	for times in 0 .. 10 {
+		println(" ---------------- iteration $times ------------------ ")
+		prev_state := bodies.clone()
+		bodies = []
+		for i in 0 .. prev_state.len {
 			requests <- solver.BodyRequest{
 				body: i,
 				previous_state: prev_state
 			}
 		}
-
-		println(threads)
-		println("----- Body 1 iteration $times ------------")
-		println(bodies[1])
+		for _ in 0 .. prev_state.len {
+			body := <- results
+			bodies << body
+			println(body)
+		}
 	}
 }

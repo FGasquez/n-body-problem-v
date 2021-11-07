@@ -7,7 +7,6 @@ pub fn process_body(bodies []Body, id int, gravity f64, speed f64) Body {
 	mut dist_len := 0.0
 
 	for i :=0; i < bodies.len; i++ {
-		println("Yo venia procesando como un campeon")
 		if i != id {
 			// Calculate the distance between the bodies
 			dist = b.pos.sub(bodies[i].pos)
@@ -17,6 +16,5 @@ pub fn process_body(bodies []Body, id int, gravity f64, speed f64) Body {
 		}
 	}
 
-	println(b)
 	return b
 }
