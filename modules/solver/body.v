@@ -1,17 +1,19 @@
 module solver
 
 import math
+import gx
 
 pub struct Body {
 pub mut:
 	id int
 	mass f64
+	color gx.Color
 	pos Vector
 	vel Vector
 }
 
 pub struct Vector {
-mut:
+pub mut:
 	x f64
 	y f64
 	z f64
@@ -26,7 +28,7 @@ pub fn (v Vector) mul(num f64) Vector {
 }
 
 pub fn (v Vector) length() f64 {
-	return math.sqrt(v.x*v.x + v.y*v.y + v.z*v.z)
+	return math.sqrt(math.pow(v.x, 2) + math.pow(v.y, 2) + math.pow(v.z, 2))
 }
 
 pub fn (v Vector) add(v2 Vector) Vector {
@@ -59,5 +61,13 @@ pub fn (v Vector) normalize() Vector {
 		x: v.x/len,
 		y: v.y/len,
 		z: v.z/len
+	}
+}
+
+pub fn (v Vector) div(num f64) Vector {
+	return Vector {
+		x: v.x/num,
+		y: v.y/num,
+		z: v.z/num
 	}
 }

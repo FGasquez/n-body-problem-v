@@ -1,65 +1,73 @@
 module main
 
 import solver
+import animation
+import gx
+
 
 fn main() {
-	mut threads := []thread {}
+	mut threads := []thread {cap: 10}
+	mut to_draw := [][]solver.Body{cap: 10}
 	requests := chan solver.BodyRequest{cap: 10}
 	results := chan solver.Body{cap: 10}
-	threads_count := 2
+	threads_count := 3
+	iterations_count := 200000
 
 	mut bodies := [
 		solver.Body{
 			id: 1
-			mass: 2
+			mass: 10.0
+			color: gx.red
 			pos: solver.Vector{
-				x: 1
-				y: 2
-				z: 3
+				x: 290.0
+				y: 310.0
+				z: -11.0
 			} 
 			vel: solver.Vector{
-				x: 3
-				y: 5
-				z: 3
+				x: -3.0
+				y: 00.0
+				z: 00.0
 			}
 		},
 		solver.Body{
 			id: 2
-			mass: 123
+			mass: 20.0
+			color: gx.green
 			pos: solver.Vector{
-				x: 11
-				y: 22
-				z: 33
+				x: 300.0
+				y: 300.0
+				z: 300.0
 			} 
 			vel: solver.Vector{
-				x: 32
-				y: 51
-				z: 31
+				x: 0.0
+				y: 0.0
+				z: 0.0
 			}
 		},
 		solver.Body{
 			id: 3
-			mass: 41
+			mass: 300.0
+			color: gx.yellow
 			pos: solver.Vector{
-				x: 12
-				y: 34
-				z: 23
+				x: 310.0
+				y: 310.0
+				z: 312.0
 			} 
 			vel: solver.Vector{
-				x: 15
-				y: 31
-				z: 25
+				x: 3.0
+				y: 0.0
+				z: 0.0
 			}
 		}
 	]
 
-
+	to_draw << bodies.clone()
+	
 	for _ in 0 .. threads_count {
 		threads << go solver.worker(requests, results, 9.8, 0.5)
 	}
 
-	for times in 0 .. 10 {
-		println(" ---------------- iteration $times ------------------ ")
+	for times in 0 .. iterations_count {
 		prev_state := bodies.clone()
 		bodies = []
 		for i in 0 .. prev_state.len {
@@ -68,10 +76,11 @@ fn main() {
 				previous_state: prev_state
 			}
 		}
-		for _ in 0 .. prev_state.len {
+		for i in 0 .. prev_state.len {
 			body := <- results
 			bodies << body
-			println(body)
 		}
+		to_draw << bodies.clone()
 	}
+	animation.start(to_draw)
 }
