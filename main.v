@@ -18,14 +18,14 @@ fn main() {
 			id: 0
 			mass: 50.0
 			color: gx.red
-			unamovable: true
+			unamovable: false
 			pos: solver.Vector{
 				x: 10.0
 				y: 30.0
 				z: 0.0
 			} 
 			vel: solver.Vector{
-				x: 1.0
+				x: 0.0
 				y: 0.0
 				z: 0.0
 			}
@@ -37,11 +37,11 @@ fn main() {
 			unamovable: false
 			pos: solver.Vector{
 				x: 10.0
-				y: 150.0
+				y: 50.0
 				z: 0.0
 			} 
 			vel: solver.Vector{
-				x: 1.5
+				x: 2.5
 				y: 0.0
 				z: 0.0
 			}
@@ -57,7 +57,7 @@ fn main() {
 				z: 0.0
 			} 
 			vel: solver.Vector{
-				x: -4.0
+				x: -2.0
 				y: 2.0
 				z: 0.0
 			}

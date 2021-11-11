@@ -1,6 +1,7 @@
 module animation
 
 import solver
+import math
 import gg
 import gx
 
@@ -46,16 +47,86 @@ pub fn start(bodies [][]solver.Body) {
 	app.gg.run()
 }
 
+fn draw_distance(app App, p1 solver.Vector, p2 solver.Vector, center int, conf gx.TextCfg) {
+	app.gg.draw_text(
+		center + int((p1.x + p2.x) / 2), 
+		center + int((p1.y + p2.y) / 2), 
+		math.sqrt(math.pow(p1.x - p2.x, 2)).str(),
+		gx.TextCfg{
+			color: gx.white,
+			size: 13,
+		}
+	)
+}
+
+fn draw_triangle(app App, p1 solver.Vector, p2 solver.Vector, p3 solver.Vector, center int, color gx.Color, full bool) {
+	if full {
+		app.gg.draw_triangle(
+			center + int(p1.x),
+			center + int(p1.y),
+			center + int(p2.x),
+			center + int(p2.y),
+			center + int(p3.x),
+			center + int(p3.y),
+			color
+		)
+		return 
+	} 
+
+	app.gg.draw_line(
+		center + int(p1.x),
+		center + int(p1.y),
+		center + int(p2.x),
+		center + int(p2.y),
+		color
+	)
+	app.gg.draw_line(
+		center + int(p1.x),
+		center + int(p1.y),
+		center + int(p3.x),
+		center + int(p3.y),
+		color
+	)
+	app.gg.draw_line(
+		center + int(p3.x),
+		center + int(p3.y),
+		center + int(p2.x),
+		center + int(p2.y),
+		color
+	)
+}
+
 fn frame(mut app App) {
 	center := 400
 	time := app.anim.time
 	bodies := app.anim.bodies[time]
 	app.gg.begin()
 
-	app.gg.draw_line(center + f32(bodies[0].pos.x), center + f32(bodies[0].pos.y), center + f32(bodies[1].pos.x), center + f32(bodies[1].pos.y), gx.blue)
-	app.gg.draw_line(center + f32(bodies[0].pos.x), center + f32(bodies[0].pos.y), center + f32(bodies[2].pos.x), center + f32(bodies[2].pos.y), gx.blue)
-	app.gg.draw_line(center + f32(bodies[1].pos.x), center + f32(bodies[1].pos.y), center + f32(bodies[2].pos.x), center + f32(bodies[2].pos.y), gx.blue)
+	draw_triangle(
+		app,
+		bodies[0].pos,
+		bodies[1].pos,
+		bodies[2].pos,
+		center,
+		gx.blue,
+		false
+	)
 
+	draw_distance(app, bodies[0].pos, bodies[1].pos, center, gx.TextCfg{
+		color: gx.white,
+		size: 13,
+	})
+
+	draw_distance(app, bodies[0].pos, bodies[2].pos, center, gx.TextCfg{
+		color: gx.white,
+		size: 13,
+	})
+
+	draw_distance(app, bodies[1].pos, bodies[2].pos, center, gx.TextCfg{
+		color: gx.white,
+		size: 13,
+	})
+	
 	mut min := time - 500 
 	if min < 0 {
 		min = 0
@@ -66,7 +137,7 @@ fn frame(mut app App) {
 			if i != time {
 				app.gg.draw_circle(center + f32(body.pos.x), center + f32(body.pos.y), 4, gx.gray)
 			} else {
-				app.gg.draw_circle(center + f32(body.pos.x), center + f32(body.pos.y), f32(body.mass), body.color)
+				app.gg.draw_circle(center + f32(body.pos.x), center + f32(body.pos.y), 4, body.color)
 			}
 		}
 	} 
