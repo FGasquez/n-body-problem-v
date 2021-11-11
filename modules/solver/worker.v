@@ -6,11 +6,11 @@ pub mut:
 	previous_state [] Body
 }
 
-pub fn worker(request chan BodyRequest, results chan Body, gravity f64, speed f64) {
+pub fn worker(request chan BodyRequest, results chan Body, gravity f64, delta f64) {
 	for {
 		select {
 			req := <- request  {
-				results <- process_body(req.previous_state, req.body, gravity, speed)
+				results <- process_body(req.previous_state, req.body, gravity, delta)
 			}
 		}
 

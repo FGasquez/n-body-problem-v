@@ -47,15 +47,29 @@ pub fn start(bodies [][]solver.Body) {
 }
 
 fn frame(mut app App) {
+	center := 400
 	time := app.anim.time
 	bodies := app.anim.bodies[time]
 	app.gg.begin()
-	for body in bodies {
-		// if body.id == 1 {
-		// 	println("{$body.pos.x, $body.pos.y, $body.pos.z}")
-		// }
-		app.gg.draw_circle(f32(body.pos.x), f32(body.pos.y), 4, body.color)
-	}
+
+	app.gg.draw_line(center + f32(bodies[0].pos.x), center + f32(bodies[0].pos.y), center + f32(bodies[1].pos.x), center + f32(bodies[1].pos.y), gx.blue)
+	app.gg.draw_line(center + f32(bodies[0].pos.x), center + f32(bodies[0].pos.y), center + f32(bodies[2].pos.x), center + f32(bodies[2].pos.y), gx.blue)
+	app.gg.draw_line(center + f32(bodies[1].pos.x), center + f32(bodies[1].pos.y), center + f32(bodies[2].pos.x), center + f32(bodies[2].pos.y), gx.blue)
+
+	mut min := time - 500 
+	if min < 0 {
+		min = 0
+	} 
+	for i := min; i <= time; i++ {
+		for j := 0; j < app.anim.bodies[i].len; j++ {
+			body := app.anim.bodies[i][j]
+			if i != time {
+				app.gg.draw_circle(center + f32(body.pos.x), center + f32(body.pos.y), 4, gx.gray)
+			} else {
+				app.gg.draw_circle(center + f32(body.pos.x), center + f32(body.pos.y), f32(body.mass), body.color)
+			}
+		}
+	} 
 	app.gg.end()
 	app.anim.advance()
 }

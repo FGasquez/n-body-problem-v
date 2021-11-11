@@ -8,6 +8,7 @@ pub mut:
 	id int
 	mass f64
 	color gx.Color
+	unamovable bool
 	pos Vector
 	vel Vector
 }
@@ -70,4 +71,8 @@ pub fn (v Vector) div(num f64) Vector {
 		y: v.y/num,
 		z: v.z/num
 	}
+}
+
+pub fn (v Vector) r (v2 Vector) f64 {
+	return math.sqrt(math.pow(v.x - v2.x, 2) + math.pow(v.y - v2.y, 2) + math.pow(v.z - v2.z, 2))
 }
