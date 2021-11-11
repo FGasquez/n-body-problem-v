@@ -4,9 +4,8 @@ import solver
 import animation
 import gx
 
-
 fn main() {
-	mut threads := []thread {cap: 10}
+	mut threads := []thread{cap: 10}
 	mut to_draw := [][]solver.Body{cap: 10}
 	requests := chan solver.BodyRequest{cap: 10}
 	results := chan solver.Body{cap: 10}
@@ -23,7 +22,7 @@ fn main() {
 				x: 10.0
 				y: 30.0
 				z: 0.0
-			} 
+			}
 			vel: solver.Vector{
 				x: 0.0
 				y: 0.0
@@ -39,7 +38,7 @@ fn main() {
 				x: 10.0
 				y: 50.0
 				z: 0.0
-			} 
+			}
 			vel: solver.Vector{
 				x: 2.5
 				y: 0.0
@@ -55,17 +54,17 @@ fn main() {
 				x: -30.0
 				y: -30.0
 				z: 0.0
-			} 
+			}
 			vel: solver.Vector{
 				x: -2.0
 				y: 2.0
 				z: 0.0
 			}
-		}
+		},
 	]
 
 	to_draw << bodies.clone()
-	
+
 	for _ in 0 .. threads_count {
 		threads << go solver.worker(requests, results, 9.8, 0.01)
 	}
@@ -74,12 +73,12 @@ fn main() {
 		prev_state := bodies.clone()
 		for i in 0 .. prev_state.len {
 			requests <- solver.BodyRequest{
-				body: i,
+				body: i
 				previous_state: prev_state
 			}
 		}
 		for _ in 0 .. prev_state.len {
-			res := <- results
+			res := <-results
 			bodies[res.id] = res
 		}
 		to_draw << bodies.clone()
