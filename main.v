@@ -10,7 +10,7 @@ fn main() {
 	requests := chan solver.BodyRequest{cap: 10}
 	results := chan solver.Body{cap: 10}
 	threads_count := 3
-	iterations_count := 100000
+	iterations_count := 10000000
 
 	mut bodies := [
 		solver.Body{
@@ -36,11 +36,11 @@ fn main() {
 			unamovable: false
 			pos: solver.Vector{
 				x: 10.0
-				y: 50.0
+				y: 70.0
 				z: 0.0
 			}
 			vel: solver.Vector{
-				x: 2.5
+				x: 3.5
 				y: 0.0
 				z: 0.0
 			}
@@ -66,7 +66,7 @@ fn main() {
 	to_draw << bodies.clone()
 
 	for _ in 0 .. threads_count {
-		threads << go solver.worker(requests, results, 9.8, 0.01)
+		threads << go solver.worker(requests, results, 9.8, 0.001)
 	}
 
 	for _ in 0 .. iterations_count {
