@@ -8,7 +8,7 @@ import benchmark
 fn main() {
 	gravity := 9.8
 	delta := 0.001
-	iterations_count := 100000000
+	iterations_count := 9000000
 	
 	mut to_draw := [][]solver.Body{cap: 10}
 	mut bodies := [
@@ -65,8 +65,9 @@ fn main() {
 	mut bmark := benchmark.start()
 
 	to_draw << bodies.clone()
-
-	for _ in 0 .. iterations_count {
+	mut test := []int{}
+	for i in 0 .. iterations_count {
+		test << i
 		b1 := bodies[0]
 		b2 := bodies[1]
 		b3 := bodies[2]
@@ -76,6 +77,7 @@ fn main() {
 		bodies[2] = solver.process_body([b1, b2], b3, gravity, delta)
 		to_draw << bodies.clone()
 	}
+	println(test.len)
 	bmark.measure(@FN)
 	animation.start(to_draw)
 }

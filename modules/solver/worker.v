@@ -10,9 +10,9 @@ pub mut:
 pub fn worker(request chan BodyRequest, results chan Body, gravity f64, delta f64, id int) {
 	mut bmark := benchmark.new_benchmark()
 	for {
-		req := <-request
+		req := <-request or { break }
 		bmark.step()
-		result := process_body(req.previous_state, req.body, gravity, delta, id)
+		result := process_body(req.previous_state, req.body, gravity, delta)
 		results <- result
 		bmark.ok()
 	}
