@@ -8,7 +8,7 @@ import benchmark
 fn main() {
 	gravity := 9.8
 	delta := 0.001
-	iterations_count := 10000000
+	iterations_count := 100000000
 	
 	mut to_draw := [][]solver.Body{cap: 10}
 	mut bodies := [
