@@ -89,22 +89,23 @@ fn frame(mut app App) {
 	if min < 0 {
 		min = 0
 	}
-	for i := min; i <= time; i += app.anim.speed {
+	for i := min; i <= time - 1; i += app.anim.speed {
 		for j := 0; j < app.anim.bodies[i].len; j++ {
 			body := app.anim.bodies[i][j]
-			if i != time {
-				app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
-					2.5, gx.gray)
-			} else {
-				app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
-					4, body.color)
-				app.gg.draw_text(app.anim.offset.x + int(body.pos.x), app.anim.offset.y + int(body.pos.y),
-					body.vel.length().str(), gx.TextCfg{
-					color: gx.red
-					size: 13
-				})
-			}
+			app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
+				2.5, gx.gray)
 		}
+	}
+
+	for i := 0; i < app.anim.bodies[time].len; i++ {
+		body := app.anim.bodies[time][i]
+		app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
+			4, body.color)
+		app.gg.draw_text(app.anim.offset.x + int(body.pos.x), app.anim.offset.y + int(body.pos.y),
+			body.vel.length().str(), gx.TextCfg{
+			color: gx.red
+			size: 13
+		})
 	}
 
 	app.draw_info(gx.TextCfg{

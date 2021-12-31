@@ -3,6 +3,7 @@ module main
 import solver
 import animation
 import gx
+import benchmark
 
 fn main() {
 	mut threads := []thread{cap: 10}
@@ -10,7 +11,9 @@ fn main() {
 	requests := chan solver.BodyRequest{cap: 10}
 	results := chan solver.Body{cap: 10}
 	threads_count := 3
+	delta := 0.001
 	iterations_count := 10000000
+	g := 9.8
 
 	mut bodies := [
 		solver.Body{
@@ -65,18 +68,31 @@ fn main() {
 
 	to_draw << bodies.clone()
 
-	for _ in 0 .. threads_count {
-		threads << go solver.worker(requests, results, 9.8, 0.001)
+	mut bmark := benchmark.start()
+
+	defer {
+		bmark.measure(@FN)
+	}
+
+	for i in 0 .. threads_count {
+		threads << go solver.worker(requests, results, g, delta, i)
 	}
 
 	for _ in 0 .. iterations_count {
 		prev_state := bodies.clone()
-		for i in 0 .. prev_state.len {
-			requests <- solver.BodyRequest{
-				body: i
-				previous_state: prev_state
-			}
+		requests <- solver.BodyRequest{
+			body: prev_state[0],
+			previous_state: [prev_state[1], prev_state[2]]
 		}
+		requests <- solver.BodyRequest{
+			body: prev_state[1],
+			previous_state: [prev_state[0], prev_state[2]]
+		}
+		requests <- solver.BodyRequest{
+			body: prev_state[2],
+			previous_state: [prev_state[0], prev_state[1]]
+		}
+
 		for _ in 0 .. prev_state.len {
 			res := <-results
 			bodies[res.id] = res

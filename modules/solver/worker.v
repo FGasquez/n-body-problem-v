@@ -1,17 +1,21 @@
 module solver
+import benchmark
 
 pub struct BodyRequest {
 pub mut:
-	body           int
+	body           Body
 	previous_state []Body
 }
 
-pub fn worker(request chan BodyRequest, results chan Body, gravity f64, delta f64) {
+pub fn worker(request chan BodyRequest, results chan Body, gravity f64, delta f64, id int) {
+	mut bmark := benchmark.new_benchmark()
 	for {
-		select {
-			req := <-request {
-				results <- process_body(req.previous_state, req.body, gravity, delta)
-			}
-		}
+		req := <-request
+		bmark.step()
+		result := process_body(req.previous_state, req.body, gravity, delta, id)
+		results <- result
+		bmark.ok()
 	}
+	bmark.stop()
+	println(bmark.total_message(@FN + ': worker $id'))
 }
