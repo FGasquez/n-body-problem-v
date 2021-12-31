@@ -74,25 +74,6 @@ fn main() {
 		bodies[0] = solver.process_body([b2, b3], b1, gravity, delta)
 		bodies[1] = solver.process_body([b1, b3], b2, gravity, delta)
 		bodies[2] = solver.process_body([b1, b2], b3, gravity, delta)
-
-		// r1 := (b1.pos.sub(b2.pos).div(math.pow(b1.pos.sub(b2.pos).length(),
-		// 		3))).mul(-gravity * b2.mass).sub(b1.pos.sub(b3.pos).div(math.pow(b1.pos.sub(b3.pos).length(),
-		// 		3)).mul(gravity * b3.mass))
-		// r2 := (b2.pos.sub(b1.pos).div(math.pow(b2.pos.sub(b1.pos).length(),
-		// 		3))).mul(-gravity * b1.mass).sub(b2.pos.sub(b3.pos).div(math.pow(b2.pos.sub(b3.pos).length(),
-		// 		3)).mul(gravity * b3.mass))
-		// r3 := (b3.pos.sub(b1.pos).div(math.pow(b3.pos.sub(b1.pos).length(),
-		// 		3))).mul(-gravity * b1.mass).sub(b3.pos.sub(b2.pos).div(math.pow(b3.pos.sub(b2.pos).length(),
-		// 		3)).mul(gravity * b2.mass))
-
-
-		// bodies[0].vel = bodies[0].vel.add(r1.mul(delta))
-		// bodies[1].vel = bodies[1].vel.add(r2.mul(delta))
-		// bodies[2].vel = bodies[2].vel.add(r3.mul(delta))
-
-		// bodies[0].pos = b1.pos.add(b1.vel.mul(delta))
-		// bodies[1].pos = b2.pos.add(b2.vel.mul(delta))
-		// bodies[2].pos = b3.pos.add(b3.vel.mul(delta))
 		to_draw << bodies.clone()
 	}
 	bmark.measure(@FN)
