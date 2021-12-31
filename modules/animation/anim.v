@@ -92,14 +92,14 @@ fn frame(mut app App) {
 	for i := min; i <= time - 1; i += app.anim.speed {
 		for j := 0; j < app.anim.bodies[i].len; j++ {
 			body := app.anim.bodies[i][j]
-			app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
+			app.gg.draw_circle_filled(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
 				2.5, gx.gray)
 		}
 	}
 
 	for i := 0; i < app.anim.bodies[time].len; i++ {
 		body := app.anim.bodies[time][i]
-		app.gg.draw_circle(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
+		app.gg.draw_circle_filled(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
 			4, body.color)
 		app.gg.draw_text(app.anim.offset.x + int(body.pos.x), app.anim.offset.y + int(body.pos.y),
 			body.vel.length().str(), gx.TextCfg{
