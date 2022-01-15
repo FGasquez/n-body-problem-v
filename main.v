@@ -4,6 +4,7 @@ import solver
 import animation
 import gx
 import benchmark
+import runtime
 
 struct BodiesContainer {
 mut:
@@ -12,11 +13,9 @@ mut:
 }
 
 fn main() {
-	threads_count := 3
+	threads_count := runtime.nr_jobs()
 	mut threads := []thread{cap: threads_count}
 	mut to_draw := [][]solver.Body{}
-	requests := chan solver.BodyRequest{}
-	results := chan solver.Body{}
 	finished := chan bool{}
 
 	delta := 0.001
@@ -104,7 +103,407 @@ fn main() {
 				z: 0.0
 			}
 		},
-			solver.Body{
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
 			id: 5
 			mass: 5.0
 			color: gx.yellow
@@ -122,6 +521,9 @@ fn main() {
 		}
 	]
 
+	requests := chan solver.BodyRequest{cap: bodies.len}
+	results := chan solver.Body{cap: bodies.len}
+
 	to_draw << bodies.clone()
 
 	mut container := &BodiesContainer{
@@ -138,7 +540,6 @@ fn main() {
 	// go results_worker(mut container, results, finished)
 
 	for _ in 0 .. iterations_count {
-		println('x')
 		prev_state := container.bodies.clone()
 		for i in 0 .. container.bodies.len {
 			requests <- solver.BodyRequest{
@@ -149,7 +550,8 @@ fn main() {
 		}
 
 		for i in 0 .. container.bodies.len {
-			container.bodies[i] = <-results
+			tmp := <- results
+			container.bodies[tmp.id] = tmp
 		}
 	}
 	// for _ in 0 .. iterations_count {

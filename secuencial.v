@@ -8,10 +8,10 @@ import benchmark
 fn main() {
 	gravity := 9.8
 	delta := 0.001
-	iterations_count := 5000000
+	iterations_count := 500000
 	
 	mut to_draw := [][]solver.Body{cap: 10}
-mut bodies := [
+	mut bodies := [
 		solver.Body{
 			id: 0
 			mass: 50.0
@@ -92,7 +92,407 @@ mut bodies := [
 				z: 0.0
 			}
 		},
-			solver.Body{
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+		solver.Body{
 			id: 5
 			mass: 5.0
 			color: gx.yellow
@@ -109,6 +509,8 @@ mut bodies := [
 			}
 		}
 	]
+
+	println(bodies.len)
 
 	mut bmark := benchmark.start()
 
