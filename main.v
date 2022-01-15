@@ -5,14 +5,22 @@ import animation
 import gx
 import benchmark
 
+struct BodiesContainer {
+mut:
+	bodies []solver.Body
+	to_draw [][]solver.Body
+}
+
 fn main() {
-	mut threads := []thread{cap: 10}
-	mut to_draw := [][]solver.Body{cap: 10}
-	requests := chan solver.BodyRequest{cap: 10}
-	results := chan solver.Body{cap: 10}
 	threads_count := 3
+	mut threads := []thread{cap: threads_count}
+	mut to_draw := [][]solver.Body{}
+	requests := chan solver.BodyRequest{}
+	results := chan solver.Body{}
+	finished := chan bool{}
+
 	delta := 0.001
-	iterations_count := 10000000
+	iterations_count := 500000
 	g := 9.8
 
 	mut bodies := [
@@ -64,40 +72,124 @@ fn main() {
 				z: 0.0
 			}
 		},
+		solver.Body{
+			id: 3
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+			solver.Body{
+			id: 4
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		},
+			solver.Body{
+			id: 5
+			mass: 5.0
+			color: gx.yellow
+			unamovable: false
+			pos: solver.Vector{
+				x: -30.0
+				y: -30.0
+				z: 0.0
+			}
+			vel: solver.Vector{
+				x: -2.0
+				y: 2.0
+				z: 0.0
+			}
+		}
 	]
 
 	to_draw << bodies.clone()
 
-	mut bmark := benchmark.start()
-
-	defer {
-		bmark.measure(@FN)
+	mut container := &BodiesContainer{
+		bodies: bodies
+		to_draw: to_draw
 	}
+
+	mut bmark := benchmark.start()
 
 	for i in 0 .. threads_count {
 		threads << go solver.worker(requests, results, g, delta, i)
 	}
 
+	// go results_worker(mut container, results, finished)
+
 	for _ in 0 .. iterations_count {
-		prev_state := bodies.clone()
-		requests <- solver.BodyRequest{
-			body: prev_state[0],
-			previous_state: [prev_state[1], prev_state[2]]
-		}
-		requests <- solver.BodyRequest{
-			body: prev_state[1],
-			previous_state: [prev_state[0], prev_state[2]]
-		}
-		requests <- solver.BodyRequest{
-			body: prev_state[2],
-			previous_state: [prev_state[0], prev_state[1]]
+		println('x')
+		prev_state := container.bodies.clone()
+		for i in 0 .. container.bodies.len {
+			requests <- solver.BodyRequest{
+				body: prev_state[i]
+				previous_state: prev_state
+				id: i
+			}
 		}
 
-		for _ in 0 .. prev_state.len {
-			res := <-results
-			bodies[res.id] = res
+		for i in 0 .. container.bodies.len {
+			container.bodies[i] = <-results
 		}
-		to_draw << bodies.clone()
 	}
-	animation.start(to_draw)
+	// for _ in 0 .. iterations_count {
+	// 	prev_state := container.bodies.clone()
+	// 	requests <- solver.BodyRequest{
+	// 		body: prev_state[0]
+	// 		previous_state: [prev_state[1], prev_state[2]]
+	// 	}
+	// 	requests <- solver.BodyRequest{
+	// 		body: prev_state[1]
+	// 		previous_state: [prev_state[0], prev_state[2]]
+	// 	}
+	// 	requests <- solver.BodyRequest{
+	// 		body: prev_state[2]
+	// 		previous_state: [prev_state[0], prev_state[1]]
+	// 	}
+	// 	_ := <- finished or { break }
+	// }
+
+	requests.close()
+	threads.wait()
+
+	finished.close()
+	results.close()
+	
+	bmark.measure(@FN)
+
+	animation.start(container.to_draw)
+}
+
+fn results_worker(mut container BodiesContainer, results chan solver.Body, finished chan bool) {
+	mut i := 0
+	for {
+		res := <-results or { break }
+		container.bodies[res.id] = res
+		if i == container.bodies.len -1 {
+			container.to_draw << container.bodies.clone()
+			finished <- true
+			i = -1
+		}
+		i++
+	}
 }

@@ -40,6 +40,14 @@ pub fn (v Vector) add(v2 Vector) Vector {
 	}
 }
 
+pub fn (v Vector) scale(num f64) Vector {
+	return Vector{
+		x: v.x * num
+		y: v.y * num
+		z: v.z * num
+	}
+}
+
 pub fn (v Vector) sub(v2 Vector) Vector {
 	return Vector{
 		x: v.x - v2.x
