@@ -22,23 +22,15 @@ pub fn process_body(bodies []Body, body Body, gravity f64, delta f64) Body {
 pub fn process_body_n(bodies []Body, id int, gravity f64, delta f64) Body {
 	mut b := bodies[id]
 	mut acceleration := Vector{0, 0, 0}
+	
 	for i in 0 .. bodies.len {
 		if i != id {
 			acceleration = acceleration.add(bodies[i].pos.sub(b.pos).div(math.pow(bodies[i].pos.sub(b.pos).length(),
 					3)).mul(-gravity * bodies[i].mass))
 		}
 	}
-
-	// for i in 0 .. bodies.len {
-	// 		tmp := gravity * bodies[i].mass / math.pow(body.pos.sub(bodies[i].pos).length(), 3)
-	// 		acceleration = body.vel.add(bodies[i].pos.sub(body.pos)).scale(tmp)
-	// }
-	// positions[i].add(velocities[i].add(accelerations[i].scale(0.5)))
-
+	
 	b.pos = bodies[id].pos.add(bodies[id].vel.add(acceleration.mul(delta)))
-	
-	// velocities[i] = velocities[i].add(accelerations[i])
-	
 	b.vel = bodies[id].vel.add(acceleration)
 	return b
 }

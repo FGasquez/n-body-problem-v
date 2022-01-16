@@ -8,12 +8,11 @@ import benchmark
 fn main() {
 	gravity := 9.8
 	delta := 0.001
-	iterations_count := 500000
+	iterations_count := 100000
 	
 	mut to_draw := [][]solver.Body{cap: 10}
 	mut bodies := [
 		solver.Body{
-			id: 0
 			mass: 50.0
 			color: gx.red
 			unamovable: false
@@ -29,7 +28,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 1
 			mass: 4.0
 			color: gx.green
 			unamovable: false
@@ -45,7 +43,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 2
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -61,7 +58,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 3
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -77,7 +73,6 @@ fn main() {
 			}
 		},
 			solver.Body{
-			id: 4
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -93,7 +88,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -109,7 +103,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -125,7 +118,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -141,7 +133,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -157,7 +148,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -173,7 +163,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -189,7 +178,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -205,7 +193,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -221,7 +208,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -237,7 +223,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -253,7 +238,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -269,7 +253,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -285,7 +268,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -301,7 +283,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -317,7 +298,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -333,7 +313,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -349,7 +328,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -365,7 +343,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -381,7 +358,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -397,7 +373,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -413,7 +388,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -429,7 +403,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -445,7 +418,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -461,7 +433,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -477,7 +448,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -493,7 +463,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -509,6 +478,11 @@ fn main() {
 			}
 		}
 	]
+
+	for i in 0 .. bodies.len {
+		bodies[i].id = i
+	}
+
 
 	println(bodies.len)
 

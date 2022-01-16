@@ -19,12 +19,11 @@ fn main() {
 	finished := chan bool{}
 
 	delta := 0.001
-	iterations_count := 500000
+	iterations_count := 100000
 	g := 9.8
 
 	mut bodies := [
 		solver.Body{
-			id: 0
 			mass: 50.0
 			color: gx.red
 			unamovable: false
@@ -40,7 +39,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 1
 			mass: 4.0
 			color: gx.green
 			unamovable: false
@@ -56,7 +54,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 2
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -72,7 +69,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 3
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -88,7 +84,6 @@ fn main() {
 			}
 		},
 			solver.Body{
-			id: 4
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -104,7 +99,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -120,7 +114,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -136,7 +129,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -152,7 +144,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -168,7 +159,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -184,7 +174,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -200,7 +189,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -216,7 +204,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -232,7 +219,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -248,7 +234,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -264,7 +249,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -280,7 +264,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -296,7 +279,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -312,7 +294,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -328,7 +309,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -344,7 +324,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -360,7 +339,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -376,7 +354,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -392,7 +369,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -408,7 +384,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -424,7 +399,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -440,7 +414,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -456,7 +429,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -472,7 +444,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -488,7 +459,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -504,7 +474,6 @@ fn main() {
 			}
 		},
 		solver.Body{
-			id: 5
 			mass: 5.0
 			color: gx.yellow
 			unamovable: false
@@ -523,6 +492,10 @@ fn main() {
 
 	requests := chan solver.BodyRequest{cap: bodies.len}
 	results := chan solver.Body{cap: bodies.len}
+
+	for i in 0 .. bodies.len {
+		bodies[i].id = i
+	}
 
 	to_draw << bodies.clone()
 
@@ -545,11 +518,10 @@ fn main() {
 			requests <- solver.BodyRequest{
 				body: prev_state[i]
 				previous_state: prev_state
-				id: i
 			}
 		}
 
-		for i in 0 .. container.bodies.len {
+		for _ in 0 .. container.bodies.len {
 			tmp := <- results
 			container.bodies[tmp.id] = tmp
 		}
