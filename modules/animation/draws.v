@@ -15,7 +15,7 @@ fn draw_distance(app App, p1 solver.Vector, p2 solver.Vector, offset Offset, con
 
 fn draw_triangle(app App, p1 solver.Vector, p2 solver.Vector, p3 solver.Vector, offset Offset, color gx.Color, full bool) {
 	if full {
-		app.gg.draw_triangle(offset.x + int(p1.x), offset.y + int(p1.y), offset.x + int(p2.x),
+		app.gg.draw_triangle_filled(offset.x + int(p1.x), offset.y + int(p1.y), offset.x + int(p2.x),
 			offset.y + int(p2.y), offset.x + int(p3.x), offset.y + int(p3.y), color)
 		return
 	}
