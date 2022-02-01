@@ -1,7 +1,7 @@
 # n-body-problem-v
 
 ## Language
-[vlang](https://vlang.io) version 0.2.4
+[vlang](https://github.com/vlang/v/blob/master/doc/docs.md) version 0.2.4
 
 ## How to run
 ```bash
