@@ -107,6 +107,17 @@ fn frame(mut app App) {
 		}
 	}
 
+	for i := 0; i < app.anim.bodies[time].len; i++ {
+		body := app.anim.bodies[time][i]
+		app.gg.draw_circle_filled(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
+			4, body.color)
+		// app.gg.draw_text(app.anim.offset.x + int(body.pos.x), app.anim.offset.y + int(body.pos.y),
+		// 	body.vel.length().str(), gx.TextCfg{
+		// 	color: gx.red
+		// 	size: 13
+		// })
+	}
+
 	app.draw_info(gx.TextCfg{
 		color: gx.red
 		size: 13
