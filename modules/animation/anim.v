@@ -65,27 +65,10 @@ pub fn start(bodies [][]solver.Body) {
 fn frame(mut app App) {
 
 	time := app.anim.time
-	bodies := app.anim.bodies[time]
+	// bodies := app.anim.bodies[time]
 	app.gg.begin()
 
-	draw_triangle(app, bodies[0].pos, bodies[1].pos, bodies[2].pos, app.anim.offset, gx.blue, false)
-
-	draw_distance(app, bodies[0].pos, bodies[1].pos, app.anim.offset, gx.TextCfg{
-		color: gx.white
-		size: 13
-	})
-
-	draw_distance(app, bodies[0].pos, bodies[2].pos, app.anim.offset, gx.TextCfg{
-		color: gx.white
-		size: 13
-	})
-
-	draw_distance(app, bodies[1].pos, bodies[2].pos, app.anim.offset, gx.TextCfg{
-		color: gx.white
-		size: 13
-	})
-
-	mut min := time - (500 * app.anim.speed)
+	mut min := time - (50 * app.anim.speed)
 	if min < 0 {
 		min = 0
 	}
@@ -100,7 +83,7 @@ fn frame(mut app App) {
 	for i := 0; i < app.anim.bodies[time].len; i++ {
 		body := app.anim.bodies[time][i]
 		app.gg.draw_circle_filled(app.anim.offset.x + f32(body.pos.x), app.anim.offset.y + f32(body.pos.y),
-			4, body.color)
+			f32(body.mass), body.color)
 		app.gg.draw_text(app.anim.offset.x + int(body.pos.x), app.anim.offset.y + int(body.pos.y),
 			body.vel.length().str(), gx.TextCfg{
 			color: gx.red
