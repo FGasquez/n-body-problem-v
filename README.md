@@ -9,7 +9,7 @@
     $ v run n-body-problem-concurrent
 
     # Compiled
-    $ v -pord ./three-body-problem-concurrent.v
+    $ v -prod ./three-body-problem-concurrent.v
     $ ./three-body-problem-concurrent
 
     # Run secuential version
